@@ -1,0 +1,52 @@
+<div>
+    <h1 mat-dialog-title>Add User Data</h1>
+</div>
+<div mat-dialog-content>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>First name</mat-label>
+                <input formControlName="firstName" matInput placeholder="Enter first name of user">
+                <mat-error *ngIf="firstName.hasError('maxlength')">Name length exceeds 128</mat-error>
+                <mat-error *ngIf="firstName.hasError('required')">First Name is required</mat-error>
+            </mat-form-field>
+
+        </p>
+
+        <p>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Last name</mat-label>
+                <input formControlName="lastName" matInput placeholder="Enter last name of user">
+                <mat-error *ngIf="lastName.hasError('maxlength')">Name length exceeds 128</mat-error>
+                <mat-error *ngIf="lastName.hasError('required')">Last Name is required</mat-error>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput placeholder="Enter email of user">
+                <mat-error *ngIf="email.hasError('email')">Email invalid</mat-error>
+                <mat-error *ngIf="email.hasError('required')">Email is required</mat-error>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Phone number</mat-label>
+                <input formControlName="phoneNumber" matInput placeholder="Enter phone number of Employee">
+                <mat-error *ngIf="phoneNumber.hasError('minlength')">Phone number should be 10 digits</mat-error>
+                <mat-error *ngIf="phoneNumber.hasError('maxlength')">Phone number should be less than 10
+                    digits</mat-error>
+                <mat-error *ngIf="phoneNumber.hasError('required')">Email is required</mat-error>
+            </mat-form-field>
+        </p>
+        <div mat-dialog-actions [align]="'end'">
+            <button mat-raised-button color="primary" type="submit" mat-dialog-close>Save</button>
+            <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+
+        </div>
+    </form>
+
+</div>
